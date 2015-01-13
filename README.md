@@ -1,8 +1,8 @@
-JPA in OpenShift Quickstart
-===============================
+Sample Tomcat app that uses Doradus Service
+===========================================
 
 This is a Red Hat OpenShift sample containing a Tomcat that 
-connects to Doradus as a Service.
+connects to and uses Doradus as a Service.
 
 Running on OpenShift
 ----------------------------
