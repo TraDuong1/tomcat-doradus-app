@@ -1,0 +1,41 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+	https://raw.github.com/impetus-opensource/Kundera/Kundera-2.0.4/kundera-core/src/test/resources/META-INF/persistence_2_0.xsd"
+	version="2.0">
+	
+
+	<persistence-unit name="mongoPersistence1">
+		<provider>com.impetus.kundera.KunderaPersistence</provider>
+		<class>com.dell.jpa.crossdatastore.entity.CommonUser</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="kundera.nodes" value="127.8.69.130" />
+			<property name="kundera.port" value="27017" />
+			<property name="kundera.keyspace" value="jpademo" />
+			<property name="kundera.dialect" value="mongodb" />
+			<property name="kundera.ddl.auto.prepare" value="create" />
+			<property name="kundera.client.lookup.class"
+				value="com.impetus.client.mongodb.MongoDBClientFactory" />
+			 <property name="kundera.username" value="admin" />
+			 <property name="kundera.password" value="kAbNb2GkFjsK" />	
+			 <property name="jboss.as.jpa.managed" value="false"/>			
+		</properties>
+	</persistence-unit>
+	<persistence-unit name="mysqlPersistence1">
+	 <class>com.dell.jpa.crossdatastore.entity.CommonUser</class>
+	 <exclude-unlisted-classes>true</exclude-unlisted-classes>
+	 <properties>
+		 <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+		 <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+		 <property name="hibernate.connection.url" value="jdbc:mysql://127.8.69.131:3306/jpademo" />
+		 <property name="hibernate.connection.username" value="adminZxqkbjh" />
+		 <property name="hibernate.connection.password" value="VDJwej6AIya4" />
+		 <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+		 <property name="kundera.client.lookup.class" value="com.impetus.client.rdbms.RDBMSClientFactory" />
+		 <property name="hibernate.show_sql" value="true" />
+		 <property name="hibernate.format_sql" value="true" />
+		 <property name="jboss.as.jpa.managed" value="false"/>	
+	 </properties>
+ 	</persistence-unit>	
+</persistence>
