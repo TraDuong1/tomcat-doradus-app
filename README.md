@@ -16,7 +16,7 @@ Create Tomcat application
 Add this upstream repo
 
     cd testapp
-    git remote add upstream https://github.com/TraDuong1/jpa-openshift-quickstart
+    git remote add upstream https://github.com/TraDuong1/tomcat-doradus-app
     git pull -s recursive -X theirs upstream master
 
 
