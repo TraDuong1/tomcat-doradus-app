@@ -11,17 +11,14 @@ Create an account at https://www.openshift.com
 
 Create Tomcat application 
 
-    rhc app create myapp jbossews-2.0
+    rhc app create testapp jbossews-2.0
 
 Add this upstream repo
 
-    cd myapp
+    cd testapp
     git remote add upstream https://github.com/TraDuong1/jpa-openshift-quickstart
     git pull -s recursive -X theirs upstream master
 
-Modify the persistence.xml with the correct DB credentials for each DB from
-
-    rhc show-app myapp
 
 Then push the repo upstream
 
@@ -29,7 +26,7 @@ Then push the repo upstream
 
 That's it, you can now checkout your application at:
 
-    http://myapp-$yournamespace.$youropenshiftserver/testconnection
+    http://testapp-$yournamespace.$youropenshiftserver/testconnection
 
 
 

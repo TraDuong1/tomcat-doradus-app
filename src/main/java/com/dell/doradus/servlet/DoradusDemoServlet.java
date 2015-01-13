@@ -1,4 +1,4 @@
-package test.mongodb.servlet;
+package com.dell.doradus.servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "createtenant", urlPatterns = {"/createtenant"})
-public class DoradusTenantServlet extends HttpServlet {
+@WebServlet(name = "testconnection", urlPatterns = {"/testconnection"})
+public class DoradusDemoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -7075159164600457298L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
