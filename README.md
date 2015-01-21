@@ -11,7 +11,7 @@ Create an account at https://www.openshift.com
 
 Create Tomcat application 
 
-    rhc app create testapp jbossews-2.0
+    rhc app create testapp jbossews-2.0 -g dev-small
 
 Add this upstream repo
 

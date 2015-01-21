@@ -31,7 +31,7 @@ public class DoradusDemoServlet extends HttpServlet {
         out.println("DORADUS_HOST: " + System.getenv("DORADUS_HOST"));
         out.println("DORADUS_PORT: " + System.getenv("DORADUS_PORT"));
         
-        String url = System.getenv("DORADUS_HOST") + ":" + System.getenv("DORADUS_PORT") +"/_applications";
+        String url = "http://" + System.getenv("DORADUS_HOST") + ":" + System.getenv("DORADUS_PORT") +"/_applications";
 		out.println("invoking url: " + url);
 		
 		URL obj = new URL(url);
