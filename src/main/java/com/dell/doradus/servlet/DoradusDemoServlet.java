@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "testconnection", urlPatterns = {"/testconnection"})
+@WebServlet(name = "crud", urlPatterns = {"/crud"})
 public class DoradusDemoServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -7075159164600457298L;
