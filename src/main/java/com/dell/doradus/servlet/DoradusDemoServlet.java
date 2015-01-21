@@ -1,11 +1,7 @@
 package com.dell.doradus.servlet;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Random;
 
 import javax.servlet.ServletException;
@@ -45,11 +41,9 @@ public class DoradusDemoServlet extends HttpServlet {
 		String tenant = "Hello" + new Random().nextInt(100);	
 		String application = "TestApplication";
 		String table = "Person";
-		
-		out.println("doradusHost: " + doradusHost + "; doradusPort: " + doradusPort);
-		
+			
 		//CRUD operations
-		out.println("calling createNewTenant service for tenant: " + tenant);
+		out.println("\ncalling createNewTenant service for tenant: " + tenant);
 		int statusCode = createNewTenant(doradusHost, doradusPort, authenticationString, tenant); 	
 		out.println("status code: " + statusCode +"\n");
 
