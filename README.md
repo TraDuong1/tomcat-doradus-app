@@ -1,8 +1,7 @@
 Sample Tomcat app that uses Doradus Service
 ===========================================
 
-This is a Red Hat OpenShift sample containing a Tomcat that 
-connects to and uses Doradus as a Service.
+This is a sample Openshift Tomcat app that connects to and does CRUD operations on an external Doradus. 
 
 Running on OpenShift
 ----------------------------
