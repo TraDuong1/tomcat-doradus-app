@@ -28,7 +28,7 @@ Then push the repo upstream
 
 There are 2 implementations for testing
 
-    Using Spring RestTemplate REST client API by adding this maven dependency in your maven project
+    * Using Spring RestTemplate REST client API by adding this maven dependency in your maven project
 	
 	<dependency>
 		<groupId>org.springframework</groupId>
@@ -36,11 +36,10 @@ There are 2 implementations for testing
 		<version>3.0.2.RELEASE</version>
 	</dependency>
 	
-
     Verify
     http://testapp-$yournamespace.$youropenshiftserver/resttemplate
 
-    Using JBoss RestEasy REST client API by adding this maven dependency in your maven project
+    * Using JBoss RestEasy REST client API by adding this maven dependency in your maven project
 
 	<dependency>
 	    	<groupId>org.jboss.resteasy</groupId>
@@ -48,6 +47,6 @@ There are 2 implementations for testing
 	    	<version>3.0.10.Final</version>
 	</dependency>
 
-   Verify
-   http://testapp-$yournamespace.$youropenshiftserver/resteasy
+    Verify
+    http://testapp-$yournamespace.$youropenshiftserver/resteasy
 
