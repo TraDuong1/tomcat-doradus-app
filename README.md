@@ -26,9 +26,28 @@ Then push the repo upstream
 
     git push
 
-That's it, you can now checkout your application at:
+There are 2 implementations for testing
 
-    http://testapp-$yournamespace.$youropenshiftserver/testconnection
+    Using Spring RestTemplate REST client API by adding this maven dependency in your maven project
+	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>3.0.2.RELEASE</version>
+	</dependency>
+	
 
+    Verify
+    http://testapp-$yournamespace.$youropenshiftserver/resttemplate
 
+    Using JBoss RestEasy REST client API by adding this maven dependency in your maven project
+
+	<dependency>
+	    	<groupId>org.jboss.resteasy</groupId>
+	    	<artifactId>resteasy-client</artifactId>
+	    	<version>3.0.10.Final</version>
+	</dependency>
+
+   Verify
+   http://testapp-$yournamespace.$youropenshiftserver/resteasy
 
