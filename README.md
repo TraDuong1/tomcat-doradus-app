@@ -26,7 +26,7 @@ Then push the repo upstream
 
     git push
 
-There are 2 implementations for testing
+There are 2 implementations using REST client APIs for testing
 
     * Using Spring RestTemplate REST client API by adding this maven dependency in your maven project
 	
