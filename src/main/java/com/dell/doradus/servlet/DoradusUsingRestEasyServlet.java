@@ -56,20 +56,20 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		out.println("status code: " + statusCode +"\n");
 		
 		out.println("calling createDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);		
-		createDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
+		statusCode = createDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
 		out.println("status code: " + statusCode +"\n");
 
 		out.println("calling retrieveDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);				
 		String result = retrieveDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
-		out.println("status code: " + statusCode );
+		//out.println("status code: " + statusCode );
 		out.println("result: " + result +"\n");
 		
 		out.println("calling updateDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);						
-		updateDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
+		statusCode = updateDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
 		out.println("status code: " + statusCode +"\n");
 
 		out.println("calling deleteDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);								
-		deleteDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
+		statusCode = deleteDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
 		out.println("status code: " + statusCode +"\n");
 	}
 
@@ -146,7 +146,7 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		
 	}	
 	
-	private String deleteDataForApplication(String doradusHost,
+	private int deleteDataForApplication(String doradusHost,
 			String doradusPort, String authenticationString, String tenant,
 			String application, String table) {
 		String DATA_XML = (
@@ -226,7 +226,7 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		return result;
 	}
 	
-	private <T> T deleteDataUsingRestEasy(final String serviceURL, final String authenticationString, final T data, final MediaType contentType, Class<T> responseType) {
+	private <T>int deleteDataUsingRestEasy(final String serviceURL, final String authenticationString, final T data, final MediaType contentType, Class<T> responseType) {
 		
 		//create a Rest Client instance with request headers
 		Client client = ClientBuilder.newClient().register(new ClientRequestFilter() {
@@ -245,13 +245,12 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		
 		//invoke Doradus DELETE API
 		Response response = client.target(serviceURL).request().delete();
-		verifyStatus(response);		
 		
 		//retrieve response data 
-		T result = response.readEntity(responseType);
-		response.close();
+		//response.readEntity(responseType);
+		//response.close();
 		
-		return result;
+		return verifyStatus(response);	
 	}
 	
 	private int verifyStatus(Response response) {
