@@ -60,15 +60,15 @@ public class DoradusUsingRestTemplateServlet extends HttpServlet {
 
 		out.println("calling retrieveDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);				
 		String result = retrieveDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
-		//out.println("status code: " + statusCode );
-		//out.println("result: " + result +"\n");
+		out.println("status code: " + statusCode );
+		out.println("result: " + result +"\n");
 		
 		out.println("calling updateDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);						
 		statusCode = updateDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
 		out.println("status code: " + statusCode +"\n");
 
 		out.println("calling deleteDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);								
-		statusCode = deleteDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
+		//statusCode = deleteDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
 		out.println("status code: " + statusCode +"\n");
 	}
 
