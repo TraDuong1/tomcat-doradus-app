@@ -197,7 +197,6 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 	}
 
 
-	
 	private <T> T getDataUsingRestEasy(final String serviceURL, final String authenticationString, final MediaType contentType, final Class<T> responseType) {
 		
 		//create a Rest Client instance with request headers
@@ -245,10 +244,6 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		
 		//invoke Doradus DELETE API
 		Response response = client.target(serviceURL).request().delete();
-		
-		//retrieve response data 
-		//response.readEntity(responseType);
-		//response.close();
 		
 		return verifyStatus(response);	
 	}
