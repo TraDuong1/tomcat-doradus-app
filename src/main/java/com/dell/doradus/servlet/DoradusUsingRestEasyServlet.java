@@ -79,7 +79,8 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		String serviceURL = "http://" + doradusHost + ":" + doradusPort + "/" + application + "/" + table + "/_query?q=*&tenant="+tenant;
 		return getDataUsingRestEasy(serviceURL, authenticationString, MediaType.APPLICATION_JSON, String.class);		
 	}
-	
+
+
 	private int createNewApplicationForTenant(String doradusHost, String doradusPort, String authenticationString, String tenant, String application, String table) {
 		String NEWAPPLICATION_XML =
 			        "<application name='" + application +"'>" +
@@ -268,5 +269,4 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		Response response = client.target(serviceURL).request().delete();
 		return verifyStatus(response);		
 	}
-  
 }
