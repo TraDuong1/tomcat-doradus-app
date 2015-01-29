@@ -21,7 +21,7 @@ import org.springframework.http.MediaType;
  * Example to invoke Doradus Rest APIs using RestEasy
  * http://docs.jboss.org/resteasy/docs/2.0.0.GA/userguide/html/RESTEasy_Client_Framework.html
  */
-@WebServlet(name = "resteasy", urlPatterns = {"/resteasy"})
+@WebServlet(name = "resteasy", urlPatterns = {"/resteasy", "foo"})
 public class DoradusUsingRestEasyServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -7075159164600457298L;
