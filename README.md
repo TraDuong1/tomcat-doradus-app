@@ -28,17 +28,6 @@ Then push the repo upstream
 
 There are 2 implementations using REST client APIs for testing
 
-    * Using Spring RestTemplate REST client API by adding this maven dependency in your maven project
-	
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-web</artifactId>
-		<version>3.0.2.RELEASE</version>
-	</dependency>
-	
-    Verify
-    http://testapp-$yournamespace.$youropenshiftserver/resttemplate
-
     * Using JBoss RestEasy REST client API by adding this maven dependency in your maven project
 
 	<dependency>
@@ -49,4 +38,15 @@ There are 2 implementations using REST client APIs for testing
 
     Verify
     http://testapp-$yournamespace.$youropenshiftserver/resteasy
+
+    * Using Spring RestTemplate REST client API by adding this maven dependency in your maven project
+	
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>3.0.2.RELEASE</version>
+	</dependency>
+	
+    Verify
+    http://testapp-$yournamespace.$youropenshiftserver/resttemplate
 
