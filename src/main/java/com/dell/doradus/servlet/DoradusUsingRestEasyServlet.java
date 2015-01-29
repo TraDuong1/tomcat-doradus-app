@@ -61,16 +61,25 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 
 		out.println("calling retrieveDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);				
 		String result = retrieveDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
-		//out.println("status code: " + statusCode );
 		out.println("result: " + result +"\n");
 		
 		out.println("calling updateDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);						
 		statusCode = updateDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
 		out.println("status code: " + statusCode +"\n");
-
+		
+		out.println("verifying data after update...");
+		out.println("calling retrieveDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);				
+		result = retrieveDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
+		out.println("result: " + result +"\n");
+		
 		out.println("calling deleteDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);								
 		statusCode = deleteDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
 		out.println("status code: " + statusCode +"\n");
+		
+		out.println("verifying data after delete...");
+		out.println("calling retrieveDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);				
+		result = retrieveDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
+		out.println("result: " + result +"\n");		
 	}
 
 	private String retrieveDataForApplication(String doradusHost,
