@@ -76,10 +76,7 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		statusCode = deleteDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
 		out.println("status code: " + statusCode +"\n");
 		
-		out.println("verifying data after delete...");
-		out.println("calling retrieveDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);				
-		result = retrieveDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
-		out.println("result: " + result +"\n");		
+			
 	}
 
 	private String retrieveDataForApplication(String doradusHost,
