@@ -73,15 +73,13 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		out.println("status code: " + statusCode +"\n");
 	}
 
-
 	private String retrieveDataForApplication(String doradusHost,
 			String doradusPort, String authenticationString, String tenant, String application, String table) {
 			
 		String serviceURL = "http://" + doradusHost + ":" + doradusPort + "/" + application + "/" + table + "/_query?q=*&tenant="+tenant;
 		return getDataUsingRestEasy(serviceURL, authenticationString, MediaType.APPLICATION_JSON, String.class);		
 	}
-
-
+	
 	private int createNewApplicationForTenant(String doradusHost, String doradusPort, String authenticationString, String tenant, String application, String table) {
 		String NEWAPPLICATION_XML =
 			        "<application name='" + application +"'>" +
@@ -104,7 +102,7 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 
 	private int createDataForApplication(String doradusHost,
 			String doradusPort, String authenticationString, String tenant, String application, String table) {
-		String DATA_XML = (
+		String DATA_JSON = (
 			       "{'batch': {" +
 			               "'docs': [" +
 			                   "{'doc': {" +
@@ -120,13 +118,13 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 			               "]" +
 			           "}}").replace('\'', '"');
 		String serviceURL = "http://" + doradusHost + ":" + doradusPort + "/" + application + "/" + table + "?tenant="+tenant;
-		return postDataUsingRestEasy(serviceURL, authenticationString, DATA_XML, MediaType.APPLICATION_JSON, null);				
+		return postDataUsingRestEasy(serviceURL, authenticationString, DATA_JSON, MediaType.APPLICATION_JSON, null);				
 	}
 	
 	private int updateDataForApplication(String doradusHost,
 			String doradusPort, String authenticationString, String tenant,
 			String application, String table) {
-		String DATA_XML = (
+		String DATA_JSON = (
 			       "{'batch': {" +
 			               "'docs': [" +
 			                   "{'doc': {" +
@@ -142,14 +140,14 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 			               "]" +
 			           "}}").replace('\'', '"');
 		String serviceURL = "http://" + doradusHost + ":" + doradusPort + "/" + application + "/" + table + "?tenant="+tenant;
-		return postDataUsingRestEasy(serviceURL, authenticationString, DATA_XML, MediaType.APPLICATION_JSON, null);	
+		return postDataUsingRestEasy(serviceURL, authenticationString, DATA_JSON, MediaType.APPLICATION_JSON, null);	
 		
 	}	
 	
 	private int deleteDataForApplication(String doradusHost,
 			String doradusPort, String authenticationString, String tenant,
 			String application, String table) {
-		String DATA_XML = (
+		String DATA_JSON = (
 			       "{'batch': {" +
 			               "'docs': [" +
 			                   "{'doc': {" +
@@ -158,34 +156,48 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 			               "]" +
 			           "}}").replace('\'', '"');
 		String serviceURL = "http://" + doradusHost + ":" + doradusPort + "/" + application + "/" + table + "?tenant="+tenant;
-		return deleteDataUsingRestEasy(serviceURL, authenticationString, DATA_XML, MediaType.APPLICATION_JSON, null);	
+		return deleteDataUsingRestEasy(serviceURL, authenticationString, DATA_JSON, MediaType.APPLICATION_JSON, null);	
 		
 	}	
 	private int createNewTenant(String doradusHost, String doradusPort, String authenticationString, String tenant) {
 	
 		String NEWTENANT_XML = "<tenant name='" + tenant + "'>" +
-							   "<users>" +
-							   "<user name='Katniss' password='Everdeen'/>" +
-							   "</users>" +
+							   		"<users>" +
+							   			"<user name='Katniss' password='Everdeen'/>" +
+							   		"</users>" +
 							   "</tenant>";
 		String serviceURL = "http://" + doradusHost + ":" + doradusPort +"/_tenants";
 		return postDataUsingRestEasy(serviceURL, authenticationString, NEWTENANT_XML, MediaType.TEXT_XML, String.class);
 	}
-
+	
+	private int verifyStatus(Response response) {
+		int status = response.getStatus();
+		if (status != 200 && status != 201) {
+			throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
+		}
+		return status;
+	}
+	
+	/**
+	 * postDataUsingRestEasy
+	 * @param serviceURL
+	 * @param authenticationString
+	 * @param data
+	 * @param contentType
+	 * @param responseType
+	 * @return httpStatusCode
+	 */
 	private <T> int postDataUsingRestEasy(String serviceURL, final String authenticationString, final T data, final MediaType contentType, final Class<T> responseType) {		
 		
 		//create a Rest Client instance with request headers
 		Client client = ClientBuilder.newClient().register(new ClientRequestFilter() {
 			@Override
-			public void filter(
-					javax.ws.rs.client.ClientRequestContext requestContext)
-					throws IOException {
+			public void filter(javax.ws.rs.client.ClientRequestContext requestContext) throws IOException {
 				MultivaluedMap<String, Object> requestHeaders = requestContext.getHeaders();
 				requestHeaders.add("Authorization", "Basic " + authenticationString);
 				requestHeaders.add("Content-Type", contentType.toString());					
 			}
-	
-			
+		
 		});
 
 		Entity<T> entity = Entity.entity(data, javax.ws.rs.core.MediaType.valueOf(contentType.toString()));
@@ -197,20 +209,24 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 	}
 
 
+	/**
+	 * getDataUsingRestEasy
+	 * @param serviceURL
+	 * @param authenticationString
+	 * @param contentType
+	 * @param responseType
+	 * @return response object with responseType
+	 */
 	private <T> T getDataUsingRestEasy(final String serviceURL, final String authenticationString, final MediaType contentType, final Class<T> responseType) {
 		
 		//create a Rest Client instance with request headers
 		Client client = ClientBuilder.newClient().register(new ClientRequestFilter() {
 			@Override
-			public void filter(
-					javax.ws.rs.client.ClientRequestContext requestContext)
-					throws IOException {
+			public void filter(javax.ws.rs.client.ClientRequestContext requestContext) throws IOException {
 				MultivaluedMap<String, Object> requestHeaders = requestContext.getHeaders();
 				requestHeaders.add("Authorization", "Basic " + authenticationString);
 				requestHeaders.add("Content-Type", contentType.toString());					
-			}
-	
-			
+			}		
 		});
 		
 		//invoke Doradus GET API
@@ -225,35 +241,32 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		return result;
 	}
 	
-	private <T>int deleteDataUsingRestEasy(final String serviceURL, final String authenticationString, final T data, final MediaType contentType, Class<T> responseType) {
+	
+	/**
+	 * deleteDataUsingRestEasy
+	 * @param serviceURL
+	 * @param authenticationString
+	 * @param data
+	 * @param contentType
+	 * @param responseType
+	 * @return httpStatusCode
+	 */
+	private <T> int deleteDataUsingRestEasy(final String serviceURL, final String authenticationString, final T data, final MediaType contentType, Class<T> responseType) {
 		
 		//create a Rest Client instance with request headers
 		Client client = ClientBuilder.newClient().register(new ClientRequestFilter() {
 			@Override
-			public void filter(
-					javax.ws.rs.client.ClientRequestContext requestContext)
-					throws IOException {
+			public void filter(javax.ws.rs.client.ClientRequestContext requestContext) throws IOException {
 				MultivaluedMap<String, Object> requestHeaders = requestContext.getHeaders();
 				requestHeaders.add("Authorization", "Basic " + authenticationString);
 				requestHeaders.add("Content-Type", contentType.toString());	
 				requestContext.setEntity(data);
-			}
-	
-			
+			}		
 		});
 		
 		//invoke Doradus DELETE API
 		Response response = client.target(serviceURL).request().delete();
-		
-		return verifyStatus(response);	
-	}
-	
-	private int verifyStatus(Response response) {
-		int status = response.getStatus();
-		if (status != 200 && status != 201) {
-			throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
-		}
-		return status;
+		return verifyStatus(response);		
 	}
   
 }
