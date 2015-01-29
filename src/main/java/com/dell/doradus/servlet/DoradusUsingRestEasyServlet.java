@@ -75,8 +75,16 @@ public class DoradusUsingRestEasyServlet extends HttpServlet {
 		out.println("calling deleteDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);								
 		statusCode = deleteDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
 		out.println("status code: " + statusCode +"\n");
+
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+		}
 		
-			
+		out.println("verifying data after delete...");
+		out.println("calling retrieveDataForApplication service for tenant: " + tenant +", application: " + application +", table: " + table);				
+		result = retrieveDataForApplication(doradusHost, doradusPort, authenticationString, tenant, application, table);
+		out.println("result: " + result +"\n");		
 	}
 
 	private String retrieveDataForApplication(String doradusHost,
