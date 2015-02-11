@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "DoradusRestServlet", urlPatterns = {"/doradus/*"})
+@WebServlet(name = "DoradusRestServlet", urlPatterns = {"/*"})
 public class DoradusRestServlet extends HttpServlet {
 	private static final long serialVersionUID = 4815487822036229036L;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
