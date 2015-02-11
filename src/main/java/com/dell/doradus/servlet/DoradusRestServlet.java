@@ -1,7 +1,5 @@
 package com.dell.doradus.servlet;
 
-import java.util.Arrays;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.annotation.WebServlet;
 
@@ -11,7 +9,7 @@ import com.dell.doradus.service.rest.RESTService;
 import com.dell.doradus.service.rest.RESTServlet;
 import com.dell.doradus.service.spider.SpiderService;
 
-@WebServlet(name = "DoradusRestServlet", urlPatterns = {"/doradus"})
+@WebServlet(name = "DoradusRestServlet", urlPatterns = {"/doradus/*"})
 public class DoradusRestServlet extends RESTServlet {
 	private static final long serialVersionUID = 4815487822036229036L;
 	
