@@ -9,14 +9,14 @@ import com.dell.doradus.service.rest.RESTService;
 import com.dell.doradus.service.rest.RESTServlet;
 import com.dell.doradus.service.spider.SpiderService;
 
-@WebServlet(name = "DoradusRestServlet", urlPatterns = {"/"})
+@WebServlet(name = "DoradusRestServlet", urlPatterns = {"/*"})
 public class DoradusRestServlet extends RESTServlet {
 	private static final long serialVersionUID = 4815487822036229036L;
 	
 	private static final String[] SERVICES = new String[]{
 	        SpiderService.class.getName(),
-	        OLAPService.class.getName(),
-	        RESTService.class.getName()
+	        OLAPService.class.getName()
+	        //RESTService.class.getName()
 	};
 	 
 	@Override
