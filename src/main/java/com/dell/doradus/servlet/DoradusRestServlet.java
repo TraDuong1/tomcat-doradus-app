@@ -23,7 +23,7 @@ public class DoradusRestServlet extends RESTServlet {
 	 
 	@Override
 	public void init(ServletConfig config)  {
-		final String[] args = new String[] { "-dbhost", "10.228.23.117", "-dbport", "9042", "-restport", "29042", "-dbuser", "SuperDory", "-dbpassword", "Alpha1"};
+		final String[] args = new String[] { "-dbhost", "10.228.23.117", "-dbport", "9042", "-restport", "57631", "-dbuser", "SuperDory", "-dbpassword", "Alpha1"};
 				DoradusServer.startEmbedded(args, SERVICES);
 	}
 }
