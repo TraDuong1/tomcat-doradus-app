@@ -26,7 +26,7 @@ public class DoradusRestServlet extends RESTServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
     	out.println(request.getPathInfo());
-    	out.println(request.getQueryString());
+    	out.println("queryString: "+ request.getQueryString());
     	//super.doGet(request, response);
     	
    }	
