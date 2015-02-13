@@ -32,9 +32,9 @@ public class DoradusRestServlet extends RESTServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
     	out.println(request.getPathInfo());
-    	out.println("queryString: "+ request.getQueryString());
-    	
-    	
+       	out.println("getRequestURI: "+ request.getRequestURI());        	
+       	out.println("getMethod: "+ request.getMethod());         	
+       	out.println("query: "+ request.getQueryString());
         Map<String, String> variableMap = new HashMap<String, String>();
         try {
         String query = request.getQueryString();
