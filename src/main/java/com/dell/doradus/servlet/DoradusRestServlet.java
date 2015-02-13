@@ -49,7 +49,7 @@ public class DoradusRestServlet extends RESTServlet {
                 sb.append(element.toString());
                 sb.append("\n");
             }
-        	out.println("exception: "+  sb.toString());
+        	out.println("stacktrace: "+  sb.toString());
         }
     	//super.doGet(request, response);
     	
