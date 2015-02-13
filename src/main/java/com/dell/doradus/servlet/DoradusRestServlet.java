@@ -2,6 +2,8 @@ package com.dell.doradus.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -9,8 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dell.doradus.common.Utils;
 import com.dell.doradus.core.DoradusServer;
 import com.dell.doradus.service.olap.OLAPService;
+import com.dell.doradus.service.rest.NotFoundException;
+import com.dell.doradus.service.rest.RESTCommand;
+import com.dell.doradus.service.rest.RESTService;
 import com.dell.doradus.service.rest.RESTServlet;
 import com.dell.doradus.service.spider.SpiderService;
 
@@ -27,6 +33,13 @@ public class DoradusRestServlet extends RESTServlet {
 		PrintWriter out = response.getWriter();
     	out.println(request.getPathInfo());
     	out.println("queryString: "+ request.getQueryString());
+        Map<String, String> variableMap = new HashMap<String, String>();
+        String query = request.getQueryString();
+        RESTCommand cmd = RESTService.instance().matchCommand(request.getMethod(),
+                request.getRequestURI(),
+                query,
+                variableMap);
+       	out.println("cmd: "+  cmd.toString());
     	//super.doGet(request, response);
     	
    }	
