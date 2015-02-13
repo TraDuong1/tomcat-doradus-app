@@ -33,13 +33,19 @@ public class DoradusRestServlet extends RESTServlet {
 		PrintWriter out = response.getWriter();
     	out.println(request.getPathInfo());
     	out.println("queryString: "+ request.getQueryString());
+    	
+    	
         Map<String, String> variableMap = new HashMap<String, String>();
+        try {
         String query = request.getQueryString();
         RESTCommand cmd = RESTService.instance().matchCommand(request.getMethod(),
                 request.getRequestURI(),
                 query,
                 variableMap);
-       	out.println("cmd: "+  cmd.toString());
+       		out.println("cmd: "+  cmd.toString());
+        } catch(Throwable e) {
+        	out.println("exception: "+  e.toString());
+        }
     	//super.doGet(request, response);
     	
    }	
