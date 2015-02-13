@@ -44,7 +44,12 @@ public class DoradusRestServlet extends RESTServlet {
                 variableMap);
        		out.println("cmd: "+  cmd.toString());
         } catch(Throwable e) {
-        	out.println("exception: "+  e.toString());
+        	StringBuilder sb = new StringBuilder();
+            for (StackTraceElement element : e.getStackTrace()) {
+                sb.append(element.toString());
+                sb.append("\n");
+            }
+        	out.println("exception: "+  sb.toString());
         }
     	//super.doGet(request, response);
     	
