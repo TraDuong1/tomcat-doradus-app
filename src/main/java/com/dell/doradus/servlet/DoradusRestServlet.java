@@ -46,7 +46,7 @@ public class DoradusRestServlet extends HttpServlet {
 	   @Override
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        	PrintWriter out = response.getWriter();
-
+    	out.println("doGet: ");       
 		   try {
 	            //long startNano = System.nanoTime();
 	            //RESTService.instance().onNewrequest();
@@ -58,7 +58,7 @@ public class DoradusRestServlet extends HttpServlet {
 	            String query = extractQueryParam(request, variableMap);
 	        	out.println("getRequestURI: "+ request.getRequestURI());        
 	        	out.println("getMethod: "+ request.getMethod());         	
-	        	out.println("query: "+ request.getQueryString());	            
+	        	out.println("getQueryString: "+ request.getQueryString());	            
 	            
 	            RESTCommand cmd = RESTService.instance().matchCommand(request.getMethod(),
 	                                                                  request.getRequestURI(),
