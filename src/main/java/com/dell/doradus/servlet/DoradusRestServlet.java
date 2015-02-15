@@ -41,7 +41,7 @@ public class DoradusRestServlet extends RESTServlet {
         RESTCommand cmd = RESTService.instance().matchCommand(request.getMethod(),
                 request.getRequestURI(),
                 query,
-                variableMap);
+                variableMap);      
        		out.println("cmd: "+  cmd.toString());
         } catch(Throwable e) {
         	StringBuilder sb = new StringBuilder();
@@ -49,6 +49,7 @@ public class DoradusRestServlet extends RESTServlet {
                 sb.append(element.toString());
                 sb.append("\n");
             }
+          	out.println("exception: "+  e.toString());
         	out.println("stacktrace: "+  sb.toString());
         }
     	//super.doGet(request, response);
