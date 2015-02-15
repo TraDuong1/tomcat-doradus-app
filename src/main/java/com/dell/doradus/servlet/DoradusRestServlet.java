@@ -265,29 +265,30 @@ public class DoradusRestServlet extends HttpServlet {
 //	        return Pair.create(paramName, paramValue);
 //	    }   // extractParam
 //	    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	 @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
     	out.println("doGet: " + request.getPathInfo());
        	out.println("getRequestURI: "+ request.getRequestURI());        	
        	out.println("getMethod: "+ request.getMethod());         	
        	out.println("getQueryString: "+ request.getQueryString());
         Map<String, String> variableMap = new HashMap<String, String>();
-        try {
-        String query = request.getQueryString();
-        RESTCommand cmd = RESTService.instance().matchCommand(request.getMethod(),
-                request.getRequestURI(),
-                query,
-                variableMap);      
-       		out.println("cmd: "+  cmd.toString());
-        } catch(Throwable e) {
-        	StringBuilder sb = new StringBuilder();
-            for (StackTraceElement element : e.getStackTrace()) {
-                sb.append(element.toString());
-                sb.append("\n");
-            }
-          	out.println("exception: "+  e.toString());
-        	out.println("stacktrace: "+  sb.toString());
-        }
+//        try {
+//        String query = request.getQueryString();
+//        RESTCommand cmd = RESTService.instance().matchCommand(request.getMethod(),
+//                request.getRequestURI(),
+//                query,
+//                variableMap);      
+//       		out.println("cmd: "+  cmd.toString());
+//        } catch(Throwable e) {
+//        	StringBuilder sb = new StringBuilder();
+//            for (StackTraceElement element : e.getStackTrace()) {
+//                sb.append(element.toString());
+//                sb.append("\n");
+//            }
+//          	out.println("exception: "+  e.toString());
+//        	out.println("stacktrace: "+  sb.toString());
+//        }
     	//super.doGet(request, response);
     	
    }	
