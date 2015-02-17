@@ -20,7 +20,7 @@ import com.dell.doradus.service.spider.SpiderService;
 /**
  * Servlet implementation class DoradusRestServlet
  */
-@WebServlet(name = "DoradusRestServlet", urlPatterns = {"/*"})
+@WebServlet(name = "DoradusRestServlet", urlPatterns = {"/doradus/*"})
 public class DoradusRestServlet extends RESTServlet {
 	private static final long serialVersionUID = 1L;
 	 private final Logger logger = LoggerFactory.getLogger(getClass().getSimpleName());
