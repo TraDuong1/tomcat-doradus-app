@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>tomcat-doradus-app</groupId>
-	<artifactId>tomcat-doradus-app</artifactId>
+	<groupId>testapp</groupId>
+	<artifactId>testapp</artifactId>
 	<packaging>war</packaging>
 	<version>1.0</version>
-	<name>tomcat-doradus-app</name>
+	<name>testapp</name>
 	<repositories>
 		<repository>
 			<id>eap</id>
@@ -36,16 +36,6 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>3.0.2.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>com.dell.doradus</groupId>
-			<artifactId>doradus-server</artifactId>
-			<version>2.1.1</version>
-		</dependency>					
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -85,7 +75,7 @@
 			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
 			<id>openshift</id>
 			<build>
-				<finalName>tomcat-doradus-app</finalName>
+				<finalName>testapp</finalName>
 				<plugins>
 					<plugin>
 						<artifactId>maven-war-plugin</artifactId>
