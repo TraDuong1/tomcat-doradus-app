@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dell.doradus.service.rest.RESTServlet;
+
 
 @WebServlet(name = "restservlet", urlPatterns = {"/restservet/*"})
-public class DoradusRestServlet extends HttpServlet {
+public class DoradusRestServlet extends RESTServlet {
 
 	private static final long serialVersionUID = -7075159164600457298L;
 	
